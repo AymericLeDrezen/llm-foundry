@@ -57,7 +57,7 @@ eval_loader:
       data_dir: my_training1
     split: test
     max_seq_len: ${max_seq_len}
-    allow_pad_trimming: false
+    allow_pad_trimming: true
     decoder_only_format: true
     # packing_ratio:
     shuffle: true
@@ -98,7 +98,7 @@ global_train_batch_size: 48  # somewhere in the 6-8 * numgpus range seems good
 # System
 seed: ${global_seed}
 device_eval_batch_size: 8
-device_train_microbatch_size: 4
+device_train_microbatch_size: 2
 # device_train_microbatch_size: auto
 precision: amp_bf16
 
