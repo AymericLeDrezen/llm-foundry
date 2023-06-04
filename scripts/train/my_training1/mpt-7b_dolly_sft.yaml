@@ -130,5 +130,5 @@ callbacks:
 # Checkpoint to local filesystem or remote object store
 # save_interval: 5000ba
 # save_num_checkpoints_to_keep: 1  # Important, this cleans up checkpoints saved to DISK
-save_folder: ./nique/checkpoints
+# save_folder: ./nique/checkpoints
 # save_folder: s3://my-bucket/my-folder/{run_name}/checkpoints
