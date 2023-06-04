@@ -20,7 +20,6 @@ tokenizer:
   kwargs:
     model_max_length: ${max_seq_len}
 
-
 # Dataloaders
 train_loader:
   name: finetuning
@@ -38,6 +37,28 @@ train_loader:
     # # Use `python llmfoundry/data/packing.py --yaml-path /path/to/this/yaml/ ...`
     # # to profile this run's optimal packing_ratio as it depends on GPU count,
     # # batch size, sequence length
+    # packing_ratio:
+    shuffle: true
+  drop_last: true
+  num_workers: 2
+  pin_memory: false
+  prefetch_factor: 2
+  persistent_workers: true
+  timeout: 0
+
+eval_loader:
+  name: finetuning
+  dataset:
+    hf_name: json
+    hf_kwargs:
+      # Note: absolute paths for data_dir are more reliable;
+      # relative paths will be interpreted relative to whatever your
+      # working directory is when you run `train.py`
+      data_dir: my_training1
+    split: test
+    max_seq_len: ${max_seq_len}
+    allow_pad_trimming: false
+    decoder_only_format: true
     # packing_ratio:
     shuffle: true
   drop_last: true
